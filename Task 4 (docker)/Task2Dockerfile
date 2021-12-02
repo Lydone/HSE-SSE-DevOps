@@ -1,0 +1,7 @@
+FROM openjdk:8
+
+WORKDIR /app
+
+COPY /DostavimVse .
+
+CMD ./mvnw -Pinit-base -DskipTests-Dstart-class=ru.fivt.dostavimvse.DostavimvseApplication clean package && java -jar ./target/dostavimvse-0.0.1-SNAPSHOT.jar && ./mvnw -Pweb-app -DskipTests clean package && java -jar ./target/dostavimvse-0.0.1-SNAPSHOT.jar
